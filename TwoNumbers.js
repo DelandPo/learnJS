@@ -1,19 +1,22 @@
 const testData = [2, 7, 11, 15];
 var twoSum = function(nums, target) {
-  const result = [];
-  const myNumbers = new Map();
-  nums.forEach((element, index) => {
-    if (!myNumbers.has(element)) {
-      myNumbers.set(element, index);
+  if (nums.length === 0) {
+    console.log("here");
+    return [];
+  }
+  const myMap = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    const b = target - nums[i];
+    if (myMap.has(b)) {
+      console.log("here");
+      return [i, myMap.get(b)];
+    } else {
+      console.log("here");
+      myMap.set(nums[i], i);
     }
-  });
-  nums.forEach((element, index) => {
-    const searchElement = target - element;
-    if (myNumbers.has(searchElement) && result.length == 0) {
-      result.push(index, myNumbers.get(searchElement));
-    }
-  });
-  return result;
+  }
+
+  return [];
 };
 
-twoSum(testData, 9);
+console.error(twoSum(testData, 9));
