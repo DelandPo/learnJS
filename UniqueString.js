@@ -14,6 +14,25 @@ const isUnique = str => {
   return true;
 };
 
+const isUniqueChars = str => {
+  if (str.length > 128) {
+    return false;
+  }
+  const characterSet = {};
+  for (let i = 0; i < str.length; i++) {
+    if (characterSet[str[i]]) {
+      return false;
+    } else {
+      characterSet[str[i]] = true;
+    }
+  }
+  return true;
+};
+
 assert.equal(isUnique("cba"), true);
 assert.equal(isUnique("bbc"), false);
 assert.equal(isUnique(""), true);
+
+assert.equal(isUniqueChars("cba"), true);
+assert.equal(isUniqueChars("bbc"), false);
+assert.equal(isUniqueChars(""), true);
